@@ -1,0 +1,25 @@
+#!/bin/bash
+echo 'Автор программы: Коренев Артур'
+echo 'Название программы: Statistics'
+echo 'Программа считывает путь для файла и выводит статистику доступа, модификации и изменения файла'
+while :
+do
+echo -n "Введите путь к файлу: "
+read filename
+if stat --printf='Время последнего запуска:%x\nВремя последней модификации:%y\nВремя последнего изменения:%z\n' $filename
+then
+echo 'succeed'
+else
+echo " такого файла не существует."
+break
+fi
+echo 'Хотите ли вы продолжить?y/n'
+read answer
+if [ $answer = 'y' ]
+then
+continue
+else
+echo 'end'
+break
+fi
+done
